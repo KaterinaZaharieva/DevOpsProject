@@ -8,9 +8,7 @@ jobs:
       - name: Start Kubernetes
         run: |
           minikube start
-          kubectl create -f  https://k8s.io/docs/tasks/access-application-cluster/hello.yaml
-          kubectl create -f  https://k8s.io/docs/tasks/access-application-cluster/hello-service.yaml
-          kubectl create -f  https://k8s.io/docs/tasks/access-application-cluster/frontend.yaml
+          kubectl create -f  https://console.cloud.google.com/gcr/images/google-samples/global/hello-frontend
           kubectl get service frontend
   
   Flake8Test:
