@@ -2,6 +2,17 @@ on:
   push
 
 jobs:
+  Kubernetes:
+   runs-on: ubuntu-latest
+   steps:
+      - name: Start Kubernetes
+        run: |
+          minikube start
+          kubectl create -f  ./backend/hello.yaml
+          kubectl create -f  ./backend/hello-service.yaml
+          kubectl create -f  ./frontend/frontend.yaml
+          kubectl get service frontend
+  
   Flake8Test:
     runs-on: ubuntu-latest
     steps:
