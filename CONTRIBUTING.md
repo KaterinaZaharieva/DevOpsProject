@@ -38,7 +38,7 @@ the project and show your appreciation, which we would also be very happy about:
 ## Code of Conduct
 
 This project and everyone participating in it is governed by the
-[DevOps-classwork1 Code of Conduct](https://github.com/KaterinaZaharieva/DevOpsProject/master/CODE_OF_CONDUCT.md).
+[DevOps-classwork1 Code of Conduct]
 By participating, you are expected to uphold this code. Please report
 unacceptable behavior to <>.
 
@@ -205,7 +205,7 @@ the steps or point out the part which the suggestion is related to.
 You can use [this tool](https://www.cockos.com/licecap/)
 to record GIFs on macOS and Windows,
 and [this tool](https://github.com/colinkeenan/silentcast) or
-[this tool](https://github.com/GNOME/byzanz) on Linux.
+[this tool] on Linux.
 <!-- this should only be included if the project has a GUI -->
 - **Explain why this enhancement would be useful** to most DevOps-classwork1 users.
 You may also want to point out the other projects that solved it better and which
