@@ -8,9 +8,9 @@ jobs:
       - name: Start Kubernetes
         run: |
           minikube start
-          kubectl create -f  ./backend/hello.yaml
-          kubectl create -f  ./backend/hello-service.yaml
-          kubectl create -f  ./frontend/frontend.yaml
+          kubectl create -f  backend/hello.yaml
+          kubectl create -f  backend/hello-service.yaml
+          kubectl create -f  frontend/frontend.yaml
           kubectl get service frontend
   
   Flake8Test:
