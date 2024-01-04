@@ -8,7 +8,7 @@ jobs:
       - name: Start Kubernetes
         run: |
           minikube start
-          kubectl create -f  https://console.cloud.google.com/gcr/images/google-samples/global/hello-frontend
+          kubectl create -f  gcr.io/google-samples/hello-go-gke@sha256:4ea9cd3d35f81fc91bdebca3fae50c180a1048be0613ad0f811595365040396e
           kubectl get service frontend
   
   Flake8Test:
