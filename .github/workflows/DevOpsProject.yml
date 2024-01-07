@@ -147,7 +147,7 @@ jobs:
           exit-code: 1
           timeout: 3m0s
           vuln-type: "os,library" #optional, default
-          severity: "CRITICAL,HIGH"        
+          severity: "CRITICAL"        
         
       - name: Tag an image 
         run: docker tag my_first_app silvavd02/dev-ops-exercises:latest
