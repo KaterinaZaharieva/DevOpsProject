@@ -93,7 +93,7 @@ jobs:
       
   Codcov:
     runs-on: ubuntu-latest
-
+    needs: [GitLeaksCheck, UnitTest, DB-Migration-Test]
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -103,12 +103,6 @@ jobs:
         with:
            python-version: 3.7
      
-      - name: Generate coverage report
-        run: |
-            pip install pytest
-            pip install pytest-cov
-            pytest --cov=./api
-      
       - name: Check code coverage
         uses: codecov/codecov-action@v3
         with:
@@ -143,11 +137,24 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+  SecScan2:
+    runs-on: ubuntu-latest
+    needs: [GitLeaksCheck, UnitTest, DB-Migration-Test]
+    steps:
+       - name: Perform Scan
+         uses: ShiftLeftSecurity/scan-action@master
+         with:
+           type: "python"
+         env:
+          WORKSPACE: .
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
   codacy-analysis-cli:
   
     name: Codacy Analysis CLI
     runs-on: ubuntu-latest
+    needs: [GitLeaksCheck, UnitTest, DB-Migration-Test]
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
