@@ -51,7 +51,7 @@ DevOpsProject.yaml:
     
       - step3: Editor-Conf Check
         - requirements before step execution : have the Editor-Conf-Checker installed; have an exiting .editorconfig file in your reposity with preferred file configuration.
-				- step summary: Checks the files in the repository according to the .editorconfig file 
+				- step summary: Checks the files in the repository according to the .editorconfig file. If the check finds issues, the step and job fail
 
     MarkdownFilesCheck:
   			- step1: Checkout code
@@ -60,7 +60,7 @@ DevOpsProject.yaml:
       
   			- step2: Markdown File Link Check
   			  - requirements before step execution : none
-  				- step summary: Executes the 'ruzickap/action-my-markdown-link-checker@v1.1.2' available in the git-hub action marketplace; the check aims to see if any broken or invalid links are present, the step and job fail, giving a description of the links that are broken/invalid
+  				- step summary: Executes the 'ruzickap/action-my-markdown-link-checker@v1.1.2' available in the git-hub action marketplace; the check aims to see if any broken or invalid links are present, the step and job fail, giving a description of the links that are broken/invalid. If the check finds issues, the step and job fail
 
       UnitTest:
         - needs: for this job to begin the one(s) selected in the 'needs' row, they have to have finished successfully. 
@@ -79,19 +79,44 @@ DevOpsProject.yaml:
     
         - step4:  Test
 				 - requirements before step execution : set-up python; installed dependancies;
-				 - step summary: uses python to unittest a file throught its file path; in our example that file is app_test.py
+				 - step summary: uses python to unittest a file throught its file path; in our example that file is app_test.py. If the test finds issues, the step and job fail
      
-    UnitTest:
+     GitLeaksCheck:
         - needs: for this job to begin the one(s) selected in the 'needs' row, they have to have finished successfully. 
         
-  			- step1: Prepare repo
+  			- step1: Checkout code
   				- requirements before step execution : none
   				- step summary: checks-out the code
       
-  			- step2: Set up Python
+  			- step2: Gitleaks check
   			  - requirements before step execution : none
-  				- step summary: Sets up python using the 'actions/setup-python@v1' available in the GitHub Marketplace.
-     
+  				- step summary: uses the 'gitleaks/gitleaks-action@v2' action and the secret our GITHUB_TOKEN, which scans in order to find potential security vulnerabilities in our git repositories, files, and directories. If the check finds security leaks, the step and job fail.
+
+     DB-Migration-Test:
+         - needs: for this job to begin the one(s) selected in the 'needs' row, they have to have finished successfully. 
+        
+  			 - step1: 
+  				 - requirements before step execution : none
+           - services: sets up postgres service with image:postgres with env variables of the db(database), username and password, and with the options below
+  				 - step summary: checks-out the code with git-hub action; executes the joshuaavalon/flyway-action@v3.0.0 to a given postgres db, which checks for any db migrations that have been added or been requested
+      
+    CodeCov:
+         - needs: for this job to begin the one(s) selected in the 'needs' row, they have to have finished successfully. 
+        
+  			- step1: Checkout code
+    				- requirements before step execution : none
+    				- step summary: checks-out the code
+
+        - step2: Set up Python
+  			  - requirements before step execution : none
+  				- step summary: Sets up python using the 'actions/setup-python@master' available in the GitHub Marketplace. Sets-up specifically python-version: 3.7 (could be another version, chosen by the writer of the workflow)
+
+        - step3: Check code coverage
+  			  - requirements before step execution : have python set-up from previous step in the current job; have added the CODECOV_TOKEN secret in the repositories secrets (Repo->Settings->Secrets and Variables->Add secret); have an account in CodeCov website in order to generate the Codecov token)
+  				- step summary: Uses to check for code coverage files using the 'codecov/codecov-action@v3' action; If any are found, they are checked, if none are found, step finishes. If any issues are found, the step and job fail
+
+      
+         
 		...
 
 
