@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: devops-project-deploy
+  name: devops-project-deployment
   labels:
     app: devops-project-app
 spec:
