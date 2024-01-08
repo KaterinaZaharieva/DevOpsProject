@@ -53,14 +53,24 @@ DevOpsProject.yaml:
         - requirements before step execution : have the Editor-Conf-Checker installed; have an exiting .editorconfig file in your reposity with preferred file configuration.
 				- step summary: Checks the files in the repository according to the .editorconfig file 
 
-    Editor-Conf-Check:
+    MarkdownFilesCheck:
   			- step1: Checkout code
   				- requirements before step execution : none
   				- step summary: checks-out the code
       
-  			- step2: Install Editor-Conf-Checker
+  			- step2: Markdown File Link Check
   			  - requirements before step execution : none
-  				- step summary: installs the Editor-Conf-Checker app
+  				- step summary: Executes the 'ruzickap/action-my-markdown-link-checker@v1.1.2' available in the git-hub action marketplace; the check aims to see if any broken or invalid links are present, the step and job fail, giving a description of the links that are broken/invalid
+
+     MarkdownFilesCheck:
+  			- step1: Checkout code
+  				- requirements before step execution : none
+  				- step summary: checks-out the code
+      
+  			- step2: Markdown File Link Check
+  			  - requirements before step execution : none
+  				- step summary: Executes the 'ruzickap/action-my-markdown-link-checker@v1.1.2' available in the git-hub action marketplace; the check aims to see if any broken or invalid links are present, the step and job fail, giving a description of the links that are broken/invalid
+      
     
 		...
 
