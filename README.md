@@ -190,7 +190,7 @@ Before jumping into Kubernetes, let’s verify it works in Docker.
 docker run -p 5001:5000 devops-project
 ```
 
-Now navigate to http://localhost:5001, and you should see the “” message.
+Now navigate to localhost:5001, and you should see the “” message.
 
 # Running in Kubernetes
 
