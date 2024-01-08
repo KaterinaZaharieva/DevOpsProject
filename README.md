@@ -12,7 +12,7 @@ The format of this file, in order to explain what each job and step do in the De
 	
 		JOB1:
 			- step1:
-				- requirements(like repo secrets to be added to repo for app or account needed prior to step execution
+				- requirements(like repo secrets to be added to repo for app or account needed prior to step execution)
 				- step summary	
 			- step2:
 				- requirements before step execution
