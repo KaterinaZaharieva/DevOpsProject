@@ -9,6 +9,8 @@ spec:
     matchLabels:
       app: devops-project-app
   replicas: 2
+  strategy:
+    type: RollingUpdate
   template:
     metadata:
       labels:
@@ -16,7 +18,19 @@ spec:
     spec:
       containers:
       - name: devops-project
-        image: devops-project:latest
-        imagePullPolicy: Never
-        ports:
-        - containerPort: 5000
+          image: devops-project:latest
+          imagePullPolicy: Never
+           resources:
+             limits:
+               memory: 200Mi
+             requests:
+               cpu: 100m
+               memory: 200Mi
+          ports:
+           - containerPort: 5000
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 5000
+            initialDelaySeconds: 5
+            periodSeconds: 5
