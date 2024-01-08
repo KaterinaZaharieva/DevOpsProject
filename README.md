@@ -62,16 +62,36 @@ DevOpsProject.yaml:
   			  - requirements before step execution : none
   				- step summary: Executes the 'ruzickap/action-my-markdown-link-checker@v1.1.2' available in the git-hub action marketplace; the check aims to see if any broken or invalid links are present, the step and job fail, giving a description of the links that are broken/invalid
 
-     MarkdownFilesCheck:
-  			- step1: Checkout code
+      UnitTest:
+        - needs: for this job to begin the one(s) selected in the 'needs' row, they have to have finished successfully. 
+        
+  			- step1: Prepare repo
   				- requirements before step execution : none
   				- step summary: checks-out the code
       
-  			- step2: Markdown File Link Check
+  			- step2: Set up Python
   			  - requirements before step execution : none
-  				- step summary: Executes the 'ruzickap/action-my-markdown-link-checker@v1.1.2' available in the git-hub action marketplace; the check aims to see if any broken or invalid links are present, the step and job fail, giving a description of the links that are broken/invalid
-      
+  				- step summary: Sets up python using the 'actions/setup-python@v1' available in the GitHub Marketplace.
+
+        - step3:  install requirements
+				 - requirements before step execution : set-up python; have an existing requirements.txt with requirements for dependancies to install before next step
+				 - step summary: uses python install dependencies using a filepath such as the one is our workflow (src/requirements.txt).
     
+        - step4:  Test
+				 - requirements before step execution : set-up python; installed dependancies;
+				 - step summary: uses python to unittest a file throught its file path; in our example that file is app_test.py
+     
+    UnitTest:
+        - needs: for this job to begin the one(s) selected in the 'needs' row, they have to have finished successfully. 
+        
+  			- step1: Prepare repo
+  				- requirements before step execution : none
+  				- step summary: checks-out the code
+      
+  			- step2: Set up Python
+  			  - requirements before step execution : none
+  				- step summary: Sets up python using the 'actions/setup-python@v1' available in the GitHub Marketplace.
+     
 		...
 
 
