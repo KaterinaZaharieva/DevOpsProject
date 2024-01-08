@@ -187,9 +187,11 @@ Now navigate to http://localhost:5001, and you should see the “” message.
 
 # Running in Kubernetes
 
-Kubernetes, also known as K8s, is an open-source system for automating deployment, scaling, and management of containerized applications.
+>
+> Kubernetes, also known as K8s, is an open-source system for automating deployment, scaling, and management of containerized applications.
+>
 
-You are finally ready to get the application running in Kubernetes. 
+## You are finally ready to get the application running in Kubernetes. 
 
 ### First verify your kubectl is configured. At the command line, type the following:
 
@@ -210,10 +212,14 @@ kubectl get nodes
 ```
 # Deployment
 
-A Deployment provides declarative updates for Pods and ReplicaSets.
-You describe a desired state in a Deployment, and the Deployment Controller
-changes the actual state to the desired state at a controlled rate. You can define Deployments to
-create new ReplicaSets, or to remove existing Deployments and adopt all their resources with new Deployments.
+> A Deployment provides declarative updates for Pods and ReplicaSets.
+> 
+> You describe a desired state in a Deployment, and the Deployment Controller
+>
+> changes the actual state to the desired state at a controlled rate. You can define Deployments to
+> 
+> create new ReplicaSets, or to remove existing Deployments and adopt all their resources with new Deployments.
+> 
 
 ## deployment.yaml
 
@@ -250,11 +256,16 @@ which means new versions are rolled out gradually to pods to avoid downtime.
 
 # Service
 
-In Kubernetes, a Service is a method for exposing a network application that is running as one or more Pods in your cluster.
-A key aim of Services in Kubernetes is that you don't need to modify your existing application to use an unfamiliar
-service discovery mechanism.
-You can run code in Pods, whether this is a code designed for a cloud-native world, or an older app you've containerized.
-You use a Service to make that set of Pods available on the network so that clients can interact with it.
+> In Kubernetes, a Service is a method for exposing a network application that is running as one or more Pods in your cluster.
+> 
+> A key aim of Services in Kubernetes is that you don't need to modify your existing application to use an unfamiliar
+> 
+> service discovery mechanism.
+> 
+> You can run code in Pods, whether this is a code designed for a cloud-native world, or an older app you've containerized.
+> 
+> You use a Service to make that set of Pods available on the network so that clients can interact with it.
+> 
 
 ## service.yaml
 1. we have Pods that each listen on TCP port 5000
