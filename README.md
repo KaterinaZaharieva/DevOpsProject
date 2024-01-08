@@ -279,7 +279,7 @@ which means new versions are rolled out gradually to pods to avoid downtime.
 Applying this manifest creates a new Service named "devops-project-service" with the default ClusterIP service type.
 The Service targets TCP port 5000 on any Pod with the "app: devops-project-app" label.
 
-### Use kubectl to send the YAML file to Kubernetes by running the following command:
+### Use kubectl to send the YAML file to Kubernetes by running the following commands:
 
 ```
 kubectl apply -f kubernetes/deployment.yaml
@@ -292,7 +292,7 @@ kubectl apply -f kubernetes/service.yaml
 kubectl get pods
 ```
 
-### If the STATUS for the poods if "ErrImageNeverPull" you need to execute the following command:
+### If the STATUS for the poods is "ErrImageNeverPull" you need to execute the following command:
 
 ```
 eval $(minikube docker-env)
