@@ -120,7 +120,63 @@ DevOpsProject.yaml:
 		...
 
 
+# How to containerize an application and get it running in Kubernetes?
 
+## Get the application code
+Use git to clone the repository to your local machine:
+
+```
+git clone: https://github.com/KaterinaZaharieva/DevOpsProject.git
+```
+
+Change to the app directory:
+```
+cd DevOpsProject/src
+```
+
+..explayn folder..
+
+## Run locally
+Manually run the installer and application using the following commands:
+
+```
+pip install -r requirements.txt
+python app.py
+```
+
+This will start a development web server hosting your application, which you will be able to see by navigating to http://localhost:5000.
+Because port 5000 is the default port for the development server, we didn’t need to specify it.
+
+## Dockerfile
+
+Docker provides the ability to package and run an application in a loosely isolated environment called a container.
+The isolation and security lets you run many containers simultaneously on a given host.
+Containers are lightweight and contain everything needed to run the application, so you don't need to rely on what's installed on the host.
+
+Our Docker is going to:
+
+1. Get the official ubuntu latest image from Docker Hub.
+2. Install python3 and python3-pip
+3. Copy the current directory’s contents for the container to be able to use them for itself
+4. Run the pip3 installer to pull the requirements into the image.
+5. Inform Docker the container listens on port 5000.
+6. Configure the starting command to use when the container starts.
+
+## Create an image
+At your command line or shell, in the DevOpsProject directory, build the image with the following command:
+
+```
+docker build -f Dockerfile -t devops-project:latest .
+``
+
+To verify the image was created, run the following command:
+
+```
+docker image ls
+```
+
+## Running in Docker
+Before jumping into Kubernetes, let’s verify it works in Docker. 
 
 
 
