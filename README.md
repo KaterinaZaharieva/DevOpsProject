@@ -242,7 +242,7 @@ that is defined in the Pod template (app: devops-project-app).
 >
 > 4.3 Create one container and name it "devops-project" using the .spec.template.spec.containers[0].name field
 
-5. strategy.type—specifies which deployment strategy should be used. In this case and in the following examples we select RollingUpdate,
+5. strategy.type—specifies which deployment strategy should be used. In this case we select RollingUpdate,
 which means new versions are rolled out gradually to pods to avoid downtime.
 6. spec.template.spec.containers—specifies which container image to run in each of the pods and ports to expose.
 7. The spec.containers.resources field specifies:
