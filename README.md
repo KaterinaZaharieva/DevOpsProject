@@ -195,7 +195,7 @@ Now navigate to http://localhost:5001, and you should see the “” message.
 # Running in Kubernetes
 
 >
-> Kubernetes, also known as K8s, is an open-source system for automating deployment, scaling, and management of containerized applications.
+> **[Kubernetes](https://kubernetes.io/)** , also known as K8s, is an open-source system for automating deployment, scaling, and management of containerized applications.
 >
 
 ## You are finally ready to get the application running in Kubernetes. 
@@ -230,7 +230,7 @@ kubectl get nodes
 
 ## deployment.yaml
 
-1. A Deployment named "devops-project-deployment" is created, indicated by the .metadata.name field.
+1. A **[Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)** named "devops-project-deployment" is created, indicated by the .metadata.name field.
 This name will become the basis for the ReplicaSets and Pods which are created later
 2. The Deployment creates a ReplicaSet that creates two replicated Pods, indicated by the .spec.replicas field.
 3. The .spec.selector field defines how the created ReplicaSet finds which Pods to manage. In this case, you select a label
@@ -263,7 +263,7 @@ which means new versions are rolled out gradually to pods to avoid downtime.
 
 # Service
 
-> In Kubernetes, a Service is a method for exposing a network application that is running as one or more Pods in your cluster.
+> In Kubernetes, a **[Service](https://kubernetes.io/docs/concepts/services-networking/service/)** is a method for exposing a network application that is running as one or more Pods in your cluster.
 > 
 > A key aim of Services in Kubernetes is that you don't need to modify your existing application to use an unfamiliar
 > 
