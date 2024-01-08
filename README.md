@@ -2,7 +2,7 @@
 
 ## Purpose of document
 
-The purpose of this file is to serve as a documentation for DevOpsProject - Course work for FMI, year3. Made for the Modern DevOps Practices.
+The purpose of this file is to serve as a documentation for DevOpsProject - Course work for FMI, year3. Made for the Modern DevOps Practices course.
 
 ## Format of document
 
