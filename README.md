@@ -36,9 +36,9 @@ DevOpsProject.yaml:
 				- requirements before step execution: none
 				- step summary: installs the flake8 app
     
-      - step3: Check code with flake8
-        - requirements before step execution: to have installed the flake8 app at a previous step in the current job
-				- step summary: flake8 checks our Python codebase for errors, styling issues and complexity, given a filepath (such as the one in our workflow); flake8 check the 'app_test.py' in the 'src' directory file for the aforementioned issues. If the check finds issues, the step and job fail
+        - step3: Check code with flake8
+            - requirements before step execution: to have installed the flake8 app at a previous step in the current job
+    				- step summary: flake8 checks our Python codebase for errors, styling issues and complexity, given a filepath (such as the one in our workflow); flake8 check the 'app_test.py' in the 'src' directory file for the aforementioned issues. If the check finds issues, the step and job fail
     
 		Editor-Conf-Check:
 			- step1: Checkout code
