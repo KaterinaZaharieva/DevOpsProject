@@ -1,20 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hello-python
+  name: devops-project-deploy
+  labels:
+    app: devops-project-app
 spec:
   selector:
     matchLabels:
-      app: hello-python
-  replicas: 4
+      app: devops-project-app
+  replicas: 2
   template:
     metadata:
       labels:
-        app: hello-python
+        app: devops-project-app
     spec:
       containers:
-      - name: hello-python
-        image: hello-python:latest
+      - name: devops-project
+        image: devops-project:latest
         imagePullPolicy: Never
         ports:
         - containerPort: 5000
