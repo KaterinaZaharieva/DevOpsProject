@@ -433,7 +433,7 @@ If you want to use minikube again to learn more about Kubernetes, you don't need
  - [SonarSource's SonarCloud](https://github.com/SonarSource/sonarcloud-github-action)
  - [Security Scan/SecScan2](https://github.com/ShiftLeftSecurity/scan-action)
  - [Codacy Code Analysis CLI](https://github.com/codacy/codacy-analysis-cli-action)
- - [Aqua Trivy Scan](aquasecurity/trivy-action@0.13.1)
+ - [Aqua Trivy Scan](https://github.com/aquasecurity/trivy-action/releases)
  - [Docker](https://www.docker.com/)
  - [Kubernetes - used for 2nd deep dive](https://kubernetes.io/)
 
