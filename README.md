@@ -191,19 +191,19 @@ Kubernetes, also known as K8s, is an open-source system for automating deploymen
 
 You are finally ready to get the application running in Kubernetes. 
 
-First verify your kubectl is configured. At the command line, type the following:
+### First verify your kubectl is configured. At the command line, type the following:
 
 ```
 kubectl version
 ```
 
-If you don’t see a reply with a Client and Server version, you’ll need to **[install](https://minikube.sigs.k8s.io/docs/start/)** and configure it.
+### If you don’t see a reply with a Client and Server version, you’ll need to **[install](https://minikube.sigs.k8s.io/docs/start/)** and configure it.
 
 ```
 minikube start
 ```
 
-Now you are working with Kubernetes! You can see the node by typing:
+### Now you are working with Kubernetes! You can see the node by typing:
 
 ```
 kubectl get nodes
@@ -263,26 +263,26 @@ You use a Service to make that set of Pods available on the network so that clie
 Applying this manifest creates a new Service named "devops-project-service" with the default ClusterIP service type.
 The Service targets TCP port 5000 on any Pod with the "app: devops-project-app" label.
 
-Use kubectl to send the YAML file to Kubernetes by running the following command:
+### Use kubectl to send the YAML file to Kubernetes by running the following command:
 
 ```
 kubectl apply -f kubernetes/deployment.yaml
 kubectl apply -f kubernetes/service.yaml
 ```
 
-You can see the pods are running if you execute the following command:
+### You can see the pods are running if you execute the following command:
 
 ```
 kubectl get pods
 ```
 
-If the STATUS for the poods if "ErrImageNeverPull" you need to execute the following command:
+### If the STATUS for the poods if "ErrImageNeverPull" you need to execute the following command:
 
 ```
 eval $(minikube docker-env)
 ```
 
-Then have to rebuild your Docker image by running the following command:
+### Then have to rebuild your Docker image by running the following command:
 
 ```
 docker build -f Dockerfile -t devops-project:latest .
@@ -290,13 +290,13 @@ docker build -f Dockerfile -t devops-project:latest .
 
 To understand more click **[here](https://stackoverflow.com/questions/56392041/getting-errimageneverpull-in-pods)**.
 
-View the Deployment:
+### View the Deployment:
 
 ```
 kubectl get deployments
 ```
 
-View the Service you created:
+### View the Service you created:
 ```
 kubectl get services
 ```
@@ -304,7 +304,7 @@ kubectl get services
 On cloud providers that support load balancers, an external IP address would be provisioned to access the Service.
 On minikube, the LoadBalancer type makes the Service accessible through the minikube service command.
 
-Run the following command:
+### Run the following command:
 
 ```
 minikube service devops-project-service
@@ -313,20 +313,21 @@ minikube service devops-project-service
 This opens up a browser window that serves your app and shows the app's response.
 
 ## Clean up
-Now you can clean up the resources you created in your cluster:
+
+### Now you can clean up the resources you created in your cluster:
 
 ```
 kubectl delete service devops-project-service
 kubectl delete deployment devops-project-deployment
 ```
 
-Stop the Minikube cluster
+### Stop the Minikube cluster
 
 ```
 minikube stop
 ```
 
-Optionally, delete the Minikube VM:
+### Optionally, delete the Minikube VM:
 
 ```
 # Optional
