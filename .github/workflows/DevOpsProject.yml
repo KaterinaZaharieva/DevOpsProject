@@ -143,6 +143,9 @@ jobs:
     runs-on: ubuntu-latest
     needs: [GitLeaksCheck, UnitTest, DB-Migration-Test]
     steps:
+       - name: Checkout code
+         uses: actions/checkout@v3
+        
        - name: Perform Scan
          uses: ShiftLeftSecurity/scan-action@master
          with:
