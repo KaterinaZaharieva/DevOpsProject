@@ -135,8 +135,6 @@ git clone: https://github.com/KaterinaZaharieva/DevOpsProject.git
 cd DevOpsProject/src
 ```
 
-..explayn folder..
-
 ## Run locally
 
 ### Manually run the installer and application using the following commands:
@@ -151,14 +149,14 @@ Because port 5000 is the default port for the development server, we didn’t ne
 
 ## Dockerfile
 
-> Docker provides the ability to package and run an application in a loosely isolated environment called a container.
+> **[Docker](https://docs.docker.com/)** provides the ability to package and run an application in a loosely isolated environment called a container.
 > 
 > The isolation and security lets you run many containers simultaneously on a given host.
 > 
 >  Containers are lightweight and contain everything needed to run the application, so you don't need to rely on what's installed on the host.
 > 
 
-Our Docker is going to:
+Our **[Dockerfile](https://docs.docker.com/engine/reference/builder/)** is going to:
 
 1. Get the official ubuntu latest image from Docker Hub.
 2. Install python3 and python3-pip
@@ -190,7 +188,7 @@ Before jumping into Kubernetes, let’s verify it works in Docker.
 docker run -p 5001:5000 devops-project
 ```
 
-Now navigate to localhost:5001, and you should see the “” message.
+Now navigate to localhost:5001, and you should see the “Hello! I am a Flask application running on {socket number}” message.
 
 # Running in Kubernetes
 
@@ -219,7 +217,7 @@ kubectl get nodes
 ```
 # Deployment
 
-> A Deployment provides declarative updates for Pods and ReplicaSets.
+> A **[Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)** provides declarative updates for Pods and ReplicaSets.
 > 
 > You describe a desired state in a Deployment, and the Deployment Controller
 >
@@ -230,7 +228,7 @@ kubectl get nodes
 
 ## deployment.yaml
 
-1. A **[Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)** named "devops-project-deployment" is created, indicated by the .metadata.name field.
+1. A Deployment named "devops-project-deployment" is created, indicated by the .metadata.name field.
 This name will become the basis for the ReplicaSets and Pods which are created later
 2. The Deployment creates a ReplicaSet that creates two replicated Pods, indicated by the .spec.replicas field.
 3. The .spec.selector field defines how the created ReplicaSet finds which Pods to manage. In this case, you select a label
