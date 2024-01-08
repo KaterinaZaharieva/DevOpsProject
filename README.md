@@ -177,7 +177,151 @@ docker image ls
 
 ## Running in Docker
 Before jumping into Kubernetes, let’s verify it works in Docker. 
+Run the following command to have Docker run the application in a container and map it to port 5001:
 
+```
+docker run -p 5001:5000 devops-project
+```
+
+Now navigate to http://localhost:5001, and you should see the “” message.
+
+# Running in Kubernetes
+
+Kubernetes, also known as K8s, is an open-source system for automating deployment, scaling, and management of containerized applications.
+
+You are finally ready to get the application running in Kubernetes. 
+
+First verify your kubectl is configured. At the command line, type the following:
+
+```
+kubectl version
+```
+
+If you don’t see a reply with a Client and Server version, you’ll need to **[install](https://minikube.sigs.k8s.io/docs/start/)** and configure it.
+
+```
+minikube start
+```
+
+Now you are working with Kubernetes! You can see the node by typing:
+
+```
+kubectl get nodes
+```
+# Deployment
+
+A Deployment provides declarative updates for Pods and ReplicaSets.
+You describe a desired state in a Deployment, and the Deployment Controller
+changes the actual state to the desired state at a controlled rate. You can define Deployments to
+create new ReplicaSets, or to remove existing Deployments and adopt all their resources with new Deployments.
+
+deployment.yaml
+1.A Deployment named "devops-project-deployment" is created, indicated by the .metadata.name field.
+This name will become the basis for the ReplicaSets and Pods which are created later
+2.The Deployment creates a ReplicaSet that creates two replicated Pods, indicated by the .spec.replicas field.
+3. The .spec.selector field defines how the created ReplicaSet finds which Pods to manage. In this case, you select a label
+that is defined in the Pod template (app: devops-project-app). 
+4. The template field contains the following sub-fields:
+4.1 The Pods are labeled " app: devops-project-app" the .metadata.labels field.
+4.2 The Pod template's specification, or .template.spec field, indicates that the Pods run one container,
+"devops-project", which runs at version latest.
+4.3 Create one container and name it "devops-project" using the .spec.template.spec.containers[0].name field
+5. strategy.type—specifies which deployment strategy should be used. In this case and in the following examples we select RollingUpdate,
+which means new versions are rolled out gradually to pods to avoid downtime.
+6. spec.template.spec.containers—specifies which container image to run in each of the pods and ports to expose.
+7. The spec.containers.resources field specifies:
+7.1. limits—each container should not be allowed to consume more than 200Mi of memory.
+7.2. requests—each container requires 100m of CPU resources and 200Mi of memory on the node.
+8.The template.spec.containers.livenessProbe field defines what the kubelet should check to ensure that the pod is alive: 
+8.1. httpGetspecifies that the kubelet should try a HTTP request on the root of the web server on port 5000.
+8.2. periodSecondsspecifies how often the kubelet should perform a liveness probe.
+8.3. initialDelaySecondsspecifies how long the kubelet should wait after the pod starts, before performing the first probe.
+
+# Service
+
+In Kubernetes, a Service is a method for exposing a network application that is running as one or more Pods in your cluster.
+A key aim of Services in Kubernetes is that you don't need to modify your existing application to use an unfamiliar
+service discovery mechanism.
+You can run code in Pods, whether this is a code designed for a cloud-native world, or an older app you've containerized.
+You use a Service to make that set of Pods available on the network so that clients can interact with it.
+
+service.yaml
+1. we have Pods that each listen on TCP port 5000
+2. they are labelled as  app: devops-project-app
+
+Applying this manifest creates a new Service named "devops-project-service" with the default ClusterIP service type.
+The Service targets TCP port 5000 on any Pod with the "app: devops-project-app" label.
+
+Use kubectl to send the YAML file to Kubernetes by running the following command:
+
+```
+kubectl apply -f kubernetes/deployment.yaml
+kubectl apply -f kubernetes/service.yaml
+```
+
+You can see the pods are running if you execute the following command:
+
+```
+kubectl get pods
+```
+
+If the STATUS for the poods if "ErrImageNeverPull" you need to execute the following command:
+
+```
+eval $(minikube docker-env)
+```
+
+Then have to rebuild your Docker image by running the following command:
+
+```
+docker build -f Dockerfile -t devops-project:latest .
+```
+
+To understand more click **[here](https://stackoverflow.com/questions/56392041/getting-errimageneverpull-in-pods)**.
+
+View the Deployment:
+
+```
+kubectl get deployments
+```
+
+View the Service you created:
+```
+kubectl get services
+```
+
+On cloud providers that support load balancers, an external IP address would be provisioned to access the Service.
+On minikube, the LoadBalancer type makes the Service accessible through the minikube service command.
+
+Run the following command:
+
+```
+minikube service devops-project-service
+```
+
+This opens up a browser window that serves your app and shows the app's response.
+
+## Clean up
+Now you can clean up the resources you created in your cluster:
+
+```
+kubectl delete service devops-project-service
+kubectl delete deployment devops-project-deployment
+```
+
+Stop the Minikube cluster
+
+```
+minikube stop
+```
+
+Optionally, delete the Minikube VM:
+
+```
+# Optional
+minikube delete
+```
+If you want to use minikube again to learn more about Kubernetes, you don't need to delete it.
 
 
 
