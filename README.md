@@ -31,15 +31,47 @@ DevOpsProject.yaml:
 			- step1: Checkout code
 				- requirements before step execution : none
 				- step summary: the first step for any job is to have completed the checkout code process, using the available git-hub action(available in the Git-Hub market place)
+    
 			- step2: Install flake8
 				- requirements before step execution: none
-				- step summary: install the flake8 app
+				- step summary: installs the flake8 app
+    
       - step3: Check code with flake8
         - requirements before step execution: to have installed the flake8 app at a previous step in the current job
 				- step summary: flake8 checks our Python codebase for errors, styling issues and complexity, given a filepath (such as the one in our workflow); flake8 check the 'app_test.py' in the 'src' directory file for the aforementioned issues. If the check finds issues, the step and job fail
     
 		Editor-Conf-Check:
-			-step1: ...
-			-step2: ...
-			....
+			- step1: Checkout code
+				- requirements before step execution : none
+				- step summary: checks-out the code
+    
+			- step2: Install Editor-Conf-Checker
+			  - requirements before step execution : none
+				- step summary: installs the Editor-Conf-Checker app
+    
+      - step3: Editor-Conf Check
+        - requirements before step execution : have the Editor-Conf-Checker installed; have an exiting .editorconfig file in your reposity with preferred file configuration.
+				- step summary: Checks the files in the repository according to the .editorconfig file 
+
+    Editor-Conf-Check:
+  			- step1: Checkout code
+  				- requirements before step execution : none
+  				- step summary: checks-out the code
+      
+  			- step2: Install Editor-Conf-Checker
+  			  - requirements before step execution : none
+  				- step summary: installs the Editor-Conf-Checker app
+    
 		...
+
+
+
+
+
+
+
+
+
+
+
+
