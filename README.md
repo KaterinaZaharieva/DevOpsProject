@@ -420,7 +420,22 @@ If you want to use minikube again to learn more about Kubernetes, you don't need
 
 
 
+## Used apps
 
+ - [Flake8](https://flake8.pycqa.org/)
+ - [Editorconfig-checker](https://github.com/editorconfig-checker/editorconfig-checker)
+ - [MarkdownFilesCheck](https://github.com/ruzickap/action-my-markdown-link-checker)
+ - [Unittest Python](https://docs.python.org/3/library/unittest.html)
+ - [GitLeaksCheck](https://github.com/gitleaks/gitleaks-action)
+ - [Flyway Check](https://github.com/joshuaavalon/flyway-action)
+ - [CodeCov](https://about.codecov.io/tool/github-actions/)
+ - [Snyk](https://snyk.io/)
+ - [SonarSource's SonarCloud](https://github.com/SonarSource/sonarcloud-github-action)
+ - [Security Scan/SecScan2](https://github.com/ShiftLeftSecurity/scan-action)
+ - [Codacy Code Analysis CLI](https://github.com/codacy/codacy-analysis-cli-action)
+ - [Aqua Trivy Scan](aquasecurity/trivy-action@0.13.1)
+ - [Docker](https://www.docker.com/)
+ - [Kubernetes - used for 2nd deep dive](https://kubernetes.io/)
 
 
 
