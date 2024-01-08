@@ -167,7 +167,7 @@ At your command line or shell, in the DevOpsProject directory, build the image w
 
 ```
 docker build -f Dockerfile -t devops-project:latest .
-``
+```
 
 To verify the image was created, run the following command:
 
