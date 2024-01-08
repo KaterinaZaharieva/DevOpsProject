@@ -215,7 +215,7 @@ You describe a desired state in a Deployment, and the Deployment Controller
 changes the actual state to the desired state at a controlled rate. You can define Deployments to
 create new ReplicaSets, or to remove existing Deployments and adopt all their resources with new Deployments.
 
-deployment.yaml
+## deployment.yaml
 
 1. A Deployment named "devops-project-deployment" is created, indicated by the .metadata.name field.
 This name will become the basis for the ReplicaSets and Pods which are created later
@@ -256,7 +256,7 @@ service discovery mechanism.
 You can run code in Pods, whether this is a code designed for a cloud-native world, or an older app you've containerized.
 You use a Service to make that set of Pods available on the network so that clients can interact with it.
 
-service.yaml
+## service.yaml
 1. we have Pods that each listen on TCP port 5000
 2. they are labelled as  app: devops-project-app
 
