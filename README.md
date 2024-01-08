@@ -146,7 +146,7 @@ pip install -r requirements.txt
 python app.py
 ```
 
-This will start a development web server hosting your application, which you will be able to see by navigating to http://localhost:5000.
+This will start a development web server hosting your application, which you will be able to see by navigating to localhost:5000.
 Because port 5000 is the default port for the development server, we didn’t need to specify it.
 
 ## Dockerfile
