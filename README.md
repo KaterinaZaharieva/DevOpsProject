@@ -223,19 +223,29 @@ This name will become the basis for the ReplicaSets and Pods which are created l
 3. The .spec.selector field defines how the created ReplicaSet finds which Pods to manage. In this case, you select a label
 that is defined in the Pod template (app: devops-project-app). 
 4. The template field contains the following sub-fields:
-4.1 The Pods are labeled " app: devops-project-app" the .metadata.labels field.
+   
+4.1 The Pods are labeled " app: devops-project-app" the .metadata.labels field
+
 4.2 The Pod template's specification, or .template.spec field, indicates that the Pods run one container,
 "devops-project", which runs at version latest.
+
 4.3 Create one container and name it "devops-project" using the .spec.template.spec.containers[0].name field
+
 5. strategy.type—specifies which deployment strategy should be used. In this case and in the following examples we select RollingUpdate,
 which means new versions are rolled out gradually to pods to avoid downtime.
 6. spec.template.spec.containers—specifies which container image to run in each of the pods and ports to expose.
 7. The spec.containers.resources field specifies:
+   
 7.1. limits—each container should not be allowed to consume more than 200Mi of memory.
+
 7.2. requests—each container requires 100m of CPU resources and 200Mi of memory on the node.
+
 8.The template.spec.containers.livenessProbe field defines what the kubelet should check to ensure that the pod is alive: 
+
 8.1. httpGetspecifies that the kubelet should try a HTTP request on the root of the web server on port 5000.
+
 8.2. periodSecondsspecifies how often the kubelet should perform a liveness probe.
+
 8.3. initialDelaySecondsspecifies how long the kubelet should wait after the pod starts, before performing the first probe.
 
 # Service
