@@ -216,20 +216,18 @@ changes the actual state to the desired state at a controlled rate. You can defi
 create new ReplicaSets, or to remove existing Deployments and adopt all their resources with new Deployments.
 
 deployment.yaml
-1.A Deployment named "devops-project-deployment" is created, indicated by the .metadata.name field.
-This name will become the basis for the ReplicaSets and Pods which are created later
-2.The Deployment creates a ReplicaSet that creates two replicated Pods, indicated by the .spec.replicas field.
-3. The .spec.selector field defines how the created ReplicaSet finds which Pods to manage. In this case, you select a label
-that is defined in the Pod template (app: devops-project-app). 
-4. The template field contains the following sub-fields:
+
+1.A Deployment named "devops-project-deployment" is created, indicated by the .metadata.name field. This name will become the basis for the ReplicaSets and Pods which are created later
+
+2.The Deployment creates a ReplicaSet that creates two replicated Pods, indicated by the .spec.replicas field
+3. The .spec.selector field defines how the created ReplicaSet finds which Pods to manage. In this case, you select a label that is defined in the Pod template (app: devops-project-app).
+5. The template field contains the following sub-fields:
 4.1 The Pods are labeled " app: devops-project-app" the .metadata.labels field.
-4.2 The Pod template's specification, or .template.spec field, indicates that the Pods run one container,
-"devops-project", which runs at version latest.
+4.2 The Pod template's specification, or .template.spec field, indicates that the Pods run one container, "devops-project", which runs at version latest.
 4.3 Create one container and name it "devops-project" using the .spec.template.spec.containers[0].name field
-5. strategy.type—specifies which deployment strategy should be used. In this case and in the following examples we select RollingUpdate,
-which means new versions are rolled out gradually to pods to avoid downtime.
-6. spec.template.spec.containers—specifies which container image to run in each of the pods and ports to expose.
-7. The spec.containers.resources field specifies:
+6. strategy.type—specifies which deployment strategy should be used. In this case and in the following examples we select RollingUpdate, which means new versions are rolled out gradually to pods to avoid downtime.
+7. spec.template.spec.containers—specifies which container image to run in each of the pods and ports to expose.
+8. The spec.containers.resources field specifies:
 7.1. limits—each container should not be allowed to consume more than 200Mi of memory.
 7.2. requests—each container requires 100m of CPU resources and 200Mi of memory on the node.
 8.The template.spec.containers.livenessProbe field defines what the kubelet should check to ensure that the pod is alive: 
